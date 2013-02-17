@@ -38,7 +38,7 @@ public class ChatClient {
 			System.out.println("bbb");
 			uiChatRoom = new UIChatRoom(this);
 			this.name = receiver.receive();
-			this.name = this.name.substring("WELCOME USERNAME: ".length());
+			this.name = this.name.substring("WELCOME USERNAME: ".length()); // confirm the screen name
 			if (!this.name.equals(name))
 				uiChatRoom.nameConflict(this.name);
 			uiChatRoom.setScreenName(this.name);
@@ -98,11 +98,11 @@ public class ChatClient {
 			while (active) {
 				msg = receive();
 				/*Below are different ways to deal with different kind of infos.*/
-				if (msg.equals("QUIT SERVER")) {
+				if (msg.equals("QUIT SERVER")) { // the server quits.
 					uiChatRoom.connectionFailure();//server quits
 					break;
 				}
-				if (msg.startsWith("<sysinfo>")) { 
+				if (msg.startsWith("<sysinfo>")) {  // system info messages.
 					// this is system info, like room name and bulletins. 
 					System.out.println("sysinfo: " + msg);
 					msg = msg.substring("<sysinfo>".length());
@@ -111,7 +111,7 @@ public class ChatClient {
 					updateRoomInfo(info[0], info[1], info[2]);
 					continue;
 				}
-				if (msg.startsWith("<member-info> ")) {
+				if (msg.startsWith("<member-info> ")) { // member info messages.
 					System.out.println("member update");
 					String[] info = msg.split("\\|");
 					for (String i : info) 
@@ -119,7 +119,7 @@ public class ChatClient {
 					updateMemberList(info);
 					continue;
 				}
-				if (msg.startsWith("<conn-info> ")) {
+				if (msg.startsWith("<conn-info> ")) { // direct connect requests.
 					System.out.println("connection info: " + msg);
 					String[] info = msg.split(" ");
 					for (String i : info) 
