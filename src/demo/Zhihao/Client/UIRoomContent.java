@@ -73,6 +73,7 @@ class UIRoomContent extends JPanel {
 		StyleConstants.setBold(username, true);
 		StyleConstants.setForeground(selfUsername, Color.BLUE);
 		StyleConstants.setBold(selfUsername, true);
+		
 	}
 	
 	/**
