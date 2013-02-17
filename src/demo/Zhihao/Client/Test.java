@@ -11,6 +11,7 @@ public class Test extends JFrame{
 		JFileChooser jfc = new JFileChooser();
 		int i = jfc.showSaveDialog(this);
 		if (i == JFileChooser.APPROVE_OPTION)
+			System.out.println(jfc.getSelectedFile().getPath());
 			System.out.println(jfc.getSelectedFile().getName());
 	}
 	

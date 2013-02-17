@@ -44,6 +44,7 @@ class UIRoomContent extends JPanel {
 	private ChatClient chatClient = null;
 	private JPanel messageSenderPanel = null;
 	private String name = null;
+	private ImageOutput imageOutput = null;
 	
 	private SimpleAttributeSet sysNotice = new SimpleAttributeSet();
 	private SimpleAttributeSet selfMsg = new SimpleAttributeSet();
@@ -74,6 +75,12 @@ class UIRoomContent extends JPanel {
 		StyleConstants.setForeground(selfUsername, Color.BLUE);
 		StyleConstants.setBold(selfUsername, true);
 		
+		//image
+		imageOutput = new ImageOutput(messageDisplay);
+	}
+	
+	void outputHistory() {
+		imageOutput.output();
 	}
 	
 	/**

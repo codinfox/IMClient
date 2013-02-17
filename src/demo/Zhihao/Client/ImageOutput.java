@@ -33,7 +33,7 @@ class ImageOutput {
         int height = panel.getHeight();
         int pageIndex = 1;
         boolean isContinue = true;
-        File outputFile = choose();
+        String outputFile = choose();
         if (outputFile == null)
         	return;
         while (isContinue) {
@@ -43,7 +43,7 @@ class ImageOutput {
                 g.setClip(0, 0, width, height);
                 isContinue = paint(g, height, pageIndex);
                 g.dispose();
-                ImageIO.write(image, "JPG", outputFile);
+                ImageIO.write(image, "JPG", new File(outputFile));
                 pageIndex++;
             } catch (IOException ex) {
                 Logger.getLogger(ImageOutput.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,12 +51,13 @@ class ImageOutput {
         }
     }
     
-    private File choose() {
-    	File rtrn = null;
+    private String choose() {
+    	String rtrn = null;
 		JFileChooser jfc = new JFileChooser();
 		int i = jfc.showSaveDialog(panel);
-		if (i == JFileChooser.APPROVE_OPTION)
-			rtrn = jfc.getSelectedFile();
+		if (i == JFileChooser.APPROVE_OPTION) {
+			rtrn = jfc.getSelectedFile().getPath() + ".jpg";
+		}
 		return rtrn;
     }
     

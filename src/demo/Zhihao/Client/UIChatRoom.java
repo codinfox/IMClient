@@ -127,9 +127,9 @@ public class UIChatRoom extends JFrame {
 	private void menuSetup() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
-		JMenu aboutMenu = new JMenu("About");
+		JMenu aboutMenu = new JMenu("Func");
 		JMenuItem exitItem = new JMenuItem("Exit");
-		JMenuItem helpItem = new JMenuItem("Help");
+		JMenuItem helpItem = new JMenuItem("Screen Shot");
 		JMenuItem aboutItem = new JMenuItem("About");
 		fileMenu.add(exitItem);
 		aboutMenu.add(helpItem);
@@ -144,6 +144,23 @@ public class UIChatRoom extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				chatClient.quit();
 				System.exit(0);				
+			}
+		});
+		
+		helpItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				roomContent.outputHistory();
+			}
+		});
+		
+		aboutItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "InstantMessager\n      Copyleft Li Zhihao No.1152691\n" +
+						"      Source code can be distributed freely but not for commercial use.", "About InstantMessager", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 	}
