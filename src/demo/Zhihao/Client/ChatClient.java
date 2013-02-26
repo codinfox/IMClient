@@ -46,10 +46,8 @@ public class ChatClient {
 			new refresh().start();
 		} catch (NumberFormatException e) {
 			System.err.println("param error.");
-			e.printStackTrace();
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
